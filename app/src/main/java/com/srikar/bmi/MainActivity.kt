@@ -27,14 +27,11 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("BMI",bmi.toString())
                 startActivity(intent)
             }
-
-            else{
-                if(binding.age.text.toString().toFloat()<20){
-                    Toast.makeText(this,"Age is less than 20",Toast.LENGTH_SHORT).show()
-                }
-                else {
-                    Toast.makeText(this, "Enter the Details", Toast.LENGTH_SHORT).show()
-                }
+            else if(TextUtils.isEmpty(binding.age.text) || TextUtils.isEmpty(binding.height.text) || TextUtils.isEmpty(binding.weight.text)){
+                Toast.makeText(this,"Enter the Details",Toast.LENGTH_SHORT).show()
+            }
+            else if(binding.age.text.toString().toFloat()<20){
+                Toast.makeText(this,"Age is below 20",Toast.LENGTH_SHORT).show()
             }
 
         }
